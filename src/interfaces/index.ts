@@ -27,3 +27,10 @@ export interface IUser {
   website: string;
   company: ICompany;
 }
+
+export interface IPost {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}

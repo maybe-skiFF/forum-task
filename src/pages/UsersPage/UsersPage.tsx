@@ -12,7 +12,7 @@ const UsersPage = () => {
     getUsers()
       .then(data => dispatch(setUsersToStore(data)))
       .catch(err => console.error(err));
-  }, [dispatch]);
+  });
 
   return (
     <>

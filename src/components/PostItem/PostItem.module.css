@@ -1,0 +1,31 @@
+.postItemContainer {
+  display: flex;
+  column-gap: 20px;
+  width: 150px;
+  padding: 24px;
+  background-color: var(--color-6);
+  border-radius: 16px;
+  
+  margin-bottom: 10px;
+}
+
+.postItemContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.postItemTitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-accent);
+
+  margin-bottom: 7px;
+}
+
+.postItemDescription {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-2);
+}
