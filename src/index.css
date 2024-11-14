@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,600;1,62.5..100,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-family: "Manrope", sans-serif;
+  --second-family: "Noto", sans-serif;
+  --third-family: "Inter", sans-serif;
+  --color-6: #FDFDFD;
+  --color-5: #F4F4F4;
+  --color-4: #DADADA;
+  --color-3: #9C9C9c;
+  --color-2: #595959;
+  --color-1: #161616;
+  --color-accent: #22A0BC;
 }

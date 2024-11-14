@@ -1,0 +1,23 @@
+.headerMenuWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.userInfoWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.userInfoImg {
+  width: 20px;
+  height: 20px;
+}
+
+.userInfoName {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-2);
+}

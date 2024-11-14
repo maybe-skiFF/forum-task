@@ -1,5 +1,12 @@
+import { Header } from '../../components/Header/Header';
+
 const PostsPage = () => {
-  return <h1>PostsPage</h1>;
+  return (
+    <>
+      <Header />
+      <h1>PostsPage</h1>
+    </>
+  );
 };
 
 export { PostsPage };

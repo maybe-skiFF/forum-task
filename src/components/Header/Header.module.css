@@ -1,0 +1,11 @@
+.headerContainer {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 16px 150px;
+  background-color: var(--color-6);
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+}
