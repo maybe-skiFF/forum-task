@@ -9,3 +9,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.headerLink {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-2);
+
+  text-decoration: none;
+}
+
+.headerLinkWrapper {
+  display: flex;
+  gap: 30px;
+}
