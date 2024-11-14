@@ -1,10 +1,11 @@
 import { Header } from '../../components/Header/Header';
+import { UsersList } from '../../components/UsersList/UsersList';
 
 const UsersPage = () => {
   return (
     <>
       <Header />
-      <h1>UsersPage</h1>
+      <UsersList />
     </>
   );
 };

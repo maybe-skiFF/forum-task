@@ -1,0 +1,55 @@
+.userItemContainer {
+  display: flex;
+  column-gap: 20px;
+  width: 312px;
+  padding: 24px;
+  background-color: var(--color-6);
+  border-radius: 16px;
+  
+  margin-bottom: 30px;
+}
+
+.userItemImgWrapper {
+  display: flex;
+  border-radius: 8px;
+  width: 112px;
+  height: 120px;
+
+  background-image: url('../../../public/user-avatar.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.userItemContent {
+  display: flex;
+}
+
+.userItemDiscription {
+  display: flex;
+  flex-direction: column;
+}
+
+.userItemName {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-accent);
+
+  margin-bottom: 7px;
+}
+
+.userItemEmail {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-2);
+}
+
+.userItemWebsite {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-3);
+
+  margin-top: 15px;
+}
