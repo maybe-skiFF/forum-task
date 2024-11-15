@@ -16,9 +16,14 @@ export const postsDataSlice = createSlice({
     setPostsToStore: (state, action: PayloadAction<IPost[]>) => {
       state.postsData = action.payload;
     },
+    deletePostFromStore: (state, action: PayloadAction<number>) => {
+      state.postsData = state.postsData.filter(
+        post => post.id !== action.payload,
+      );
+    },
   },
 });
 
-export const { setPostsToStore } = postsDataSlice.actions;
+export const { setPostsToStore, deletePostFromStore } = postsDataSlice.actions;
 
 export default postsDataSlice.reducer;

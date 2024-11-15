@@ -16,6 +16,8 @@ import {
 } from '../../redux/favoritePostsSlice';
 import { RootState } from '../../redux/store';
 import { useState } from 'react';
+import { deletePost } from '../../services/api';
+import { deletePostFromStore } from '../../redux/postsDataSlice';
 
 interface IProps {
   postData: IPost;
@@ -53,6 +55,16 @@ const PostItem = ({ postData }: IProps) => {
     if (isLiked) setIsLiked(false);
   };
 
+  const deletePostHandler = async () => {
+    try {
+      await deletePost(postData.id);
+      dispatch(deletePostFromStore(postData.id));
+      dispatch(removePostFromFavorites(postData.id));
+    } catch (err) {
+      console.error('Error:', err);
+    }
+  };
+
   return (
     <div className={styles.postItemContainer}>
       <img
@@ -73,7 +85,12 @@ const PostItem = ({ postData }: IProps) => {
         src={!isDisliked ? dislikeNonActiveBtn : dislikeActiveBtn}
         alt="DislikeBtn"
       />
-      <img className={styles.trashBtn} src={trashBtn} alt="Trash" />
+      <img
+        onClick={() => deletePostHandler()}
+        className={styles.trashBtn}
+        src={trashBtn}
+        alt="Trash"
+      />
       <div className={styles.postItemContent}>
         <span className={styles.postItemTitle}>{title}</span>
         <span className={styles.postItemDescription}>

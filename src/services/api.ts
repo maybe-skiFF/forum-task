@@ -31,4 +31,14 @@ async function getPostsById(userId: number): Promise<IPost[]> {
   }
 }
 
-export { getUsers, getPosts, getPostsById };
+async function deletePost(postId: number): Promise<void> {
+  try {
+    await fetch(`${PATHS.BASE_URL}posts/${postId}`, {
+      method: 'DELETE',
+    });
+  } catch (err) {
+    throw new Error(`DELETE error: ${String(err)}`);
+  }
+}
+
+export { getUsers, getPosts, getPostsById, deletePost };
