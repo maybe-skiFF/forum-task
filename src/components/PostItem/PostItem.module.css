@@ -42,3 +42,25 @@
 
   cursor: pointer;
 }
+
+.likeImg {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  bottom: 2px;
+  left: 15px;
+
+  cursor: pointer;
+}
+
+.dislikeImg {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  bottom: 2px;
+  left: 45px;
+
+  cursor: pointer;
+}
