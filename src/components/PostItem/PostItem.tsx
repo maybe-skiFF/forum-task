@@ -8,6 +8,7 @@ import likeActiveBtn from '../../../public/like-active.svg';
 import likeNonActiveBtn from '../../../public/like-nonactive.svg';
 import dislikeActiveBtn from '../../../public/dislike-active.svg';
 import dislikeNonActiveBtn from '../../../public/dislike-nonactive.svg';
+import trashBtn from '../../../public/trash.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addPostToFavorite,
@@ -58,7 +59,7 @@ const PostItem = ({ postData }: IProps) => {
         onClick={() => addToFavoriteToggler()}
         className={styles.favoriteImg}
         src={!isInFavorites ? starImgNonActive : starImgActive}
-        alt="star"
+        alt="Star"
       />
       <img
         onClick={() => likeToggler()}
@@ -72,6 +73,7 @@ const PostItem = ({ postData }: IProps) => {
         src={!isDisliked ? dislikeNonActiveBtn : dislikeActiveBtn}
         alt="DislikeBtn"
       />
+      <img className={styles.trashBtn} src={trashBtn} alt="Trash" />
       <div className={styles.postItemContent}>
         <span className={styles.postItemTitle}>{title}</span>
         <span className={styles.postItemDescription}>
