@@ -24,3 +24,10 @@
   flex-wrap: wrap;
   gap: 15px;
 }
+
+.emptyMsg {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-2);
+}
