@@ -15,6 +15,9 @@ const Header = () => {
           <Link className={styles.headerLink} to="/posts">
             Posts
           </Link>
+          <Link className={styles.headerLink} to="/favorites">
+            Favorites
+          </Link>
         </div>
         <HeaderMenu />
       </div>

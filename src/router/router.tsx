@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { UsersPage } from '../pages/UsersPage/UsersPage';
 import { PostsPage } from '../pages/PostsPage/PostsPage';
+import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 
 const router = createBrowserRouter(
   [
@@ -11,6 +12,10 @@ const router = createBrowserRouter(
     {
       path: '/posts',
       element: <PostsPage />,
+    },
+    {
+      path: '/favorites',
+      element: <FavoritesPage />,
     },
   ],
   {
