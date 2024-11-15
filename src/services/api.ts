@@ -21,4 +21,14 @@ async function getPosts(): Promise<IPost[]> {
   }
 }
 
-export { getUsers, getPosts };
+async function getPostsById(userId: number): Promise<IPost[]> {
+  try {
+    const resp = await fetch(`${PATHS.BASE_URL}posts?userId=${userId}`);
+
+    return (await resp.json()) as IPost[];
+  } catch (err) {
+    throw new Error(`GET Response error: ${String(err)}`);
+  }
+}
+
+export { getUsers, getPosts, getPostsById };
