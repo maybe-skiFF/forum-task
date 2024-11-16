@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { UsersPage } from '../pages/UsersPage/UsersPage';
 import { PostsPage } from '../pages/PostsPage/PostsPage';
 import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
-import { PostPage } from '../pages/PostPage/PostPage';
+import { DetailedPostPage } from '../pages/DetailedPostPage/DetailedPostPage';
 
 const router = createBrowserRouter(
   [
@@ -20,7 +20,7 @@ const router = createBrowserRouter(
     },
     {
       path: 'posts/post/:key',
-      element: <PostPage />,
+      element: <DetailedPostPage />,
     },
   ],
   {
