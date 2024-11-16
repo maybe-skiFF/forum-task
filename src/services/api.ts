@@ -31,6 +31,16 @@ async function getPostsById(userId: number): Promise<IPost[]> {
   }
 }
 
+async function getPostById(postId: number): Promise<IPost> {
+  try {
+    const resp = await fetch(`${PATHS.BASE_URL}posts/${postId}`);
+
+    return (await resp.json()) as IPost;
+  } catch (err) {
+    throw new Error(`GET Response error: ${String(err)}`);
+  }
+}
+
 async function deletePost(postId: number): Promise<void> {
   try {
     await fetch(`${PATHS.BASE_URL}posts/${postId}`, {
@@ -41,4 +51,4 @@ async function deletePost(postId: number): Promise<void> {
   }
 }
 
-export { getUsers, getPosts, getPostsById, deletePost };
+export { getUsers, getPosts, getPostsById, deletePost, getPostById };
