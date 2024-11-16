@@ -18,6 +18,7 @@ import { RootState } from '../../redux/store';
 import { useState } from 'react';
 import { deletePost } from '../../services/api';
 import { deletePostFromStore } from '../../redux/postsDataSlice';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   postData: IPost;
@@ -26,6 +27,8 @@ interface IProps {
 const PostItem = ({ postData }: IProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isDisliked, setIsDisliked] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const { title, body } = postData;
   const dispatch = useDispatch();
@@ -66,7 +69,10 @@ const PostItem = ({ postData }: IProps) => {
   };
 
   return (
-    <div className={styles.postItemContainer}>
+    <div
+      onClick={() => navigate(`post/${postData.id}`)}
+      className={styles.postItemContainer}
+    >
       <img
         onClick={() => addToFavoriteToggler()}
         className={styles.favoriteImg}
