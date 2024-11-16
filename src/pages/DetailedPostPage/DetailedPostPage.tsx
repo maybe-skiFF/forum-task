@@ -4,6 +4,7 @@ import { Header } from '../../components/Header/Header';
 import { useEffect, useState } from 'react';
 import { getPostById } from '../../services/api';
 import { IPost } from '../../interfaces';
+import { CommentList } from '../../components/CommentList/CommentList';
 
 const DetailedPostPage = () => {
   const { key } = useParams();
@@ -19,6 +20,7 @@ const DetailedPostPage = () => {
     <>
       <Header />
       <DetailedPostItem postData={postData} />
+      <CommentList />
     </>
   );
 };
