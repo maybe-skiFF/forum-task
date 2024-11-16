@@ -70,7 +70,15 @@ const PostItem = ({ postData }: IProps) => {
 
   return (
     <div
-      onClick={() => navigate(`post/${postData.id}`)}
+      onClick={(e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (
+          target.classList.contains(styles.postItemContainer) ||
+          target.closest(`.${styles.postItemContent}`)
+        ) {
+          navigate(`post/${postData.id}`);
+        }
+      }}
       className={styles.postItemContainer}
     >
       <img
