@@ -1,0 +1,92 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  padding: 0 150px;
+  background-color: var(--color-5);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-1);
+  padding-bottom: 15px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--color-4);
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.formElementWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px
+}
+
+.formLabel {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-1);
+  border-bottom: 1px solid var(--color-4);
+}
+
+.formInput {
+  border: 1px solid #181612;
+
+  margin-left: 10px;
+
+  outline: none;
+  padding: 5px;
+
+  color: #000;
+  font-family: var(--font-family);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+
+  border-radius: 7px;
+}
+
+.formButton {
+  cursor: pointer;
+  border-radius: 7px;
+  border: 1px solid #0c0c0e;
+  color: #0c0c0e;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  outline: none;
+  background: #fff;
+  width: 100px;
+  height: 40px;
+
+  margin-top: 15px;
+}
+
+.formButton:hover {
+  background: var(--color-accent);
+  color: #fff;
+  border: 1px solid #fff;
+  transition: all 0.3s;
+}
+
+.formErrorText {
+  color: red;
+  text-align: center;
+}

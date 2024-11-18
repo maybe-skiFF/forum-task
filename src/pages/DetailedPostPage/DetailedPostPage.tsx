@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { getCommentsByPostId, getPostById } from '../../services/api';
 import { IComment, IPost } from '../../interfaces';
 import { CommentList } from '../../components/CommentList/CommentList';
+import { CommentForm } from '../../components/CommentForm/CommentForm';
 
 const DetailedPostPage = () => {
   const { key } = useParams();
@@ -25,6 +26,7 @@ const DetailedPostPage = () => {
     <>
       <Header />
       <DetailedPostItem postData={postData} />
+      <CommentForm setCommentsData={setCommentsData} />
       <CommentList commentsData={commentsData} />
     </>
   );
