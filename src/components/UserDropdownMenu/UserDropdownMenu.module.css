@@ -1,0 +1,78 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownMenu {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  position: absolute;
+  background-color: var(--color-6);
+  min-width: 200px;
+  z-index: 1;
+  box-shadow: 0 0 2px 0 #5a5a5a;
+  border-radius: 12px;
+  padding: 8px;
+  width: 146px;
+  padding-left: 20px;
+  right: 5px;
+}
+
+.dropdownBtn {
+  border-radius: 5px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-1);
+
+  position: relative;
+  cursor: pointer;
+
+  margin-top: 5px;
+  margin-left: 50px;
+}
+
+.dropdownBtn::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+
+  border-radius: 5px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-1);
+}
+
+.dropdownBtn:hover::after, .dropdownBtn:hover::before, .dropdownBtn:hover {
+  background-color: var(--color-accent);
+}
+
+.dropdownBtn::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+
+  border-radius: 5px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-1);
+}
+
+.dropdownItem {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-1);
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  color: var(--color-accent);
+}
+
+.dropdownBtnWrapper {
+  display: block;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import { IUser } from '../../interfaces';
 import styles from './UserItem.module.css';
+import { UserDropdownMenu } from '../UserDropdownMenu/UserDropdownMenu';
 
 interface IProps {
   userData: IUser;
@@ -17,6 +18,7 @@ const UserItem = ({ userData }: IProps) => {
           <span className={styles.userItemEmail}>{email}</span>
           <span className={styles.userItemWebsite}>{website}</span>
         </div>
+        <UserDropdownMenu />
       </div>
     </div>
   );
