@@ -61,6 +61,20 @@ async function deletePost(postId: number): Promise<void> {
   }
 }
 
+async function createPost(post: IPost): Promise<void> {
+  try {
+    await fetch(`${PATHS.BASE_URL}posts`, {
+      method: 'POST',
+      body: JSON.stringify(post),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+  } catch (err) {
+    throw new Error(`POST Create post error: ${String(err)}`);
+  }
+}
+
 export {
   getUsers,
   getPosts,
@@ -68,4 +82,5 @@ export {
   deletePost,
   getPostById,
   getCommentsByPostId,
+  createPost,
 };

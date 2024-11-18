@@ -21,9 +21,13 @@ export const postsDataSlice = createSlice({
         post => post.id !== action.payload,
       );
     },
+    addNewPostToStore: (state, action: PayloadAction<IPost>) => {
+      state.postsData = [...state.postsData, action.payload];
+    },
   },
 });
 
-export const { setPostsToStore, deletePostFromStore } = postsDataSlice.actions;
+export const { setPostsToStore, deletePostFromStore, addNewPostToStore } =
+  postsDataSlice.actions;
 
 export default postsDataSlice.reducer;

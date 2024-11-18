@@ -12,3 +12,8 @@
   line-height: 81%;
   color: #333153;
 }
+
+.logoText:hover {
+  color: var(--color-accent);
+  transition: all 0.3s;
+}
