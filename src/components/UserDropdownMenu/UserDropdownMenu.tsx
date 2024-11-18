@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import styles from './UserDropdownMenu.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const UserDropdownMenu = () => {
+interface IProps {
+  userId: number;
+}
+
+const UserDropdownMenu = ({ userId }: IProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -15,7 +21,12 @@ const UserDropdownMenu = () => {
       </div>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
-          <li className={styles.dropdownItem}>Edit user</li>
+          <li
+            onClick={() => navigate(`user/${userId}`)}
+            className={styles.dropdownItem}
+          >
+            Edit user
+          </li>
           <li className={styles.dropdownItem}>Edit as admin</li>
         </ul>
       )}

@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const UserItem = ({ userData }: IProps) => {
-  const { name, email, website } = userData;
+  const { name, email, website, id } = userData;
 
   return (
     <div className={styles.userItemContainer}>
@@ -18,7 +18,7 @@ const UserItem = ({ userData }: IProps) => {
           <span className={styles.userItemEmail}>{email}</span>
           <span className={styles.userItemWebsite}>{website}</span>
         </div>
-        <UserDropdownMenu />
+        <UserDropdownMenu userId={id} />
       </div>
     </div>
   );

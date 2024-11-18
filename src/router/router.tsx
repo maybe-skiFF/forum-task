@@ -3,6 +3,7 @@ import { UsersPage } from '../pages/UsersPage/UsersPage';
 import { PostsPage } from '../pages/PostsPage/PostsPage';
 import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 import { DetailedPostPage } from '../pages/DetailedPostPage/DetailedPostPage';
+import { PersonalUserPage } from '../pages/PersonalUserPage/PersonalUserPage';
 
 const router = createBrowserRouter(
   [
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
     {
       path: 'favorites/post/:key',
       element: <DetailedPostPage />,
+    },
+    {
+      path: 'user/:key',
+      element: <PersonalUserPage />,
     },
   ],
   {
