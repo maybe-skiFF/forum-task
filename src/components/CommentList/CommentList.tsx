@@ -1,11 +1,18 @@
+import { IComment } from '../../interfaces';
 import { CommentItem } from '../CommentItem/CommentItem';
 import styles from './CommentList.module.css';
 
-const CommentList = () => {
+interface IProps {
+  commentsData: IComment[];
+}
+
+const CommentList = ({ commentsData }: IProps) => {
   return (
     <div className={styles.commentListContainer}>
-      <p className={styles.title}>Comments for post #TODO</p>
-      <CommentItem />
+      <p className={styles.title}>Comments for post</p>
+      {commentsData.map((comment, i) => (
+        <CommentItem counter={i} key={comment.id} commentsData={comment} />
+      ))}
     </div>
   );
 };

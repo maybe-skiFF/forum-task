@@ -1,5 +1,5 @@
 import { PATHS } from '../constants/PATHS';
-import { IPost, IUser } from '../interfaces';
+import { IComment, IPost, IUser } from '../interfaces';
 
 async function getUsers(): Promise<IUser[]> {
   try {
@@ -41,6 +41,16 @@ async function getPostById(postId: number): Promise<IPost> {
   }
 }
 
+async function getCommentsByPostId(postId: number): Promise<IComment[]> {
+  try {
+    const resp = await fetch(`${PATHS.BASE_URL}comments?postId=${postId}`);
+
+    return (await resp.json()) as IComment[];
+  } catch (err) {
+    throw new Error(`GET Response error: ${String(err)}`);
+  }
+}
+
 async function deletePost(postId: number): Promise<void> {
   try {
     await fetch(`${PATHS.BASE_URL}posts/${postId}`, {
@@ -51,4 +61,11 @@ async function deletePost(postId: number): Promise<void> {
   }
 }
 
-export { getUsers, getPosts, getPostsById, deletePost, getPostById };
+export {
+  getUsers,
+  getPosts,
+  getPostsById,
+  deletePost,
+  getPostById,
+  getCommentsByPostId,
+};

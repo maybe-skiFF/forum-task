@@ -22,6 +22,10 @@ const router = createBrowserRouter(
       path: 'posts/post/:key',
       element: <DetailedPostPage />,
     },
+    {
+      path: 'favorites/post/:key',
+      element: <DetailedPostPage />,
+    },
   ],
   {
     future: {

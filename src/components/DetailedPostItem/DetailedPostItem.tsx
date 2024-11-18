@@ -22,7 +22,7 @@ const DetailedPostItem = ({ postData }: IProps) => {
             src={arrowLeft}
             alt="arrowLeft"
           />
-          Назад
+          Back
         </button>
       </Link>
       <p className={styles.title}>Detailed post #{id}</p>
