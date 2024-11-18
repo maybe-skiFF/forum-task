@@ -4,6 +4,7 @@ import styles from './PostsList.module.css';
 import { RootState } from '../../redux/store';
 import { IPost } from '../../interfaces/index';
 import { UsersListDropdown } from '../UsersListDropdown/UsersListDropdown';
+import { PostForm } from '../PostForm/PostForm';
 
 const PostsList = () => {
   const postsData = useSelector(
@@ -18,6 +19,7 @@ const PostsList = () => {
     <div className={styles.postsListContainer}>
       <p className={styles.title}>Posts</p>
       <UsersListDropdown usersData={usersData} />
+      <PostForm />
       <div className={styles.postsWrapper}>
         {postsData.map((post: IPost) => (
           <PostItem postData={post} key={post.id} />

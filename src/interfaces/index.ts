@@ -48,3 +48,10 @@ export interface ICommentFormData {
   email: string;
   body: string;
 }
+
+export interface IPostFormData {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
