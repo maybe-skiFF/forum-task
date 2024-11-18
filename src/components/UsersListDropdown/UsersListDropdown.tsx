@@ -2,7 +2,7 @@ import styles from './UsersListDropdown.module.css';
 import { useState } from 'react';
 import { IUser } from '../../interfaces';
 import { useDispatch } from 'react-redux';
-import { getPostsById } from '../../services/api';
+import { getPosts, getPostsById } from '../../services/api';
 import { setPostsToStore } from '../../redux/postsDataSlice';
 
 interface IProps {
@@ -14,9 +14,15 @@ const UsersListDropdown = ({ usersData }: IProps) => {
   const dispatch = useDispatch();
 
   const hendlUserIdSelect = (selectedUserId: number) => {
-    getPostsById(selectedUserId)
-      .then(data => dispatch(setPostsToStore(data)))
-      .catch(err => console.error(err));
+    if (selectedUserId !== 0) {
+      getPostsById(selectedUserId)
+        .then(data => dispatch(setPostsToStore(data)))
+        .catch(err => console.error(err));
+    } else {
+      getPosts()
+        .then(data => dispatch(setPostsToStore(data)))
+        .catch(err => console.error(err));
+    }
     setIsOpen(false);
   };
 
@@ -30,6 +36,12 @@ const UsersListDropdown = ({ usersData }: IProps) => {
       </button>
       {isOpen && (
         <div className={styles.dropdownMenu}>
+          <div
+            className={styles.dropdownItem}
+            onClick={() => hendlUserIdSelect(0)}
+          >
+            All users
+          </div>
           {usersData.map((user: IUser) => (
             <div
               onClick={() => hendlUserIdSelect(user.id)}
