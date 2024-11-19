@@ -15,34 +15,42 @@ async function loaderWrapper<T>(
   }
 }
 
-async function getUsers(): Promise<IUser[]> {
-  try {
+async function getUsers(
+  setLoading: (loading: boolean) => void,
+): Promise<IUser[]> {
+  return loaderWrapper(async () => {
     const resp = await fetch(`${PATHS.BASE_URL}users`);
 
     return (await resp.json()) as IUser[];
-  } catch (err) {
-    throw new Error(`GET Response error: ${String(err)}`);
-  }
+  }, setLoading);
 }
 
-async function getUser(userId: string | undefined): Promise<IUser> {
-  try {
+async function getUser(
+  userId: string | undefined,
+  setLoading: (loading: boolean) => void,
+): Promise<IUser> {
+  // try {
+  //   const resp = await fetch(`${PATHS.BASE_URL}users/${userId}`);
+
+  //   return (await resp.json()) as IUser;
+  // } catch (err) {
+  //   throw new Error(`GET Response error: ${String(err)}`);
+  // }
+  return loaderWrapper(async () => {
     const resp = await fetch(`${PATHS.BASE_URL}users/${userId}`);
 
     return (await resp.json()) as IUser;
-  } catch (err) {
-    throw new Error(`GET Response error: ${String(err)}`);
-  }
+  }, setLoading);
 }
 
-async function getPosts(): Promise<IPost[]> {
-  try {
+async function getPosts(
+  setLoading: (loading: boolean) => void,
+): Promise<IPost[]> {
+  return loaderWrapper(async () => {
     const resp = await fetch(`${PATHS.BASE_URL}posts`);
 
     return (await resp.json()) as IPost[];
-  } catch (err) {
-    throw new Error(`GET Response error: ${String(err)}`);
-  }
+  }, setLoading);
 }
 
 async function getPostsById(userId: number | undefined): Promise<IPost[]> {
@@ -59,14 +67,6 @@ async function getPostById(
   postId: number,
   setLoading: (loading: boolean) => void,
 ): Promise<IPost> {
-  // try {
-  //   const resp = await fetch(`${PATHS.BASE_URL}posts/${postId}`);
-
-  //   return (await resp.json()) as IPost;
-  // } catch (err) {
-  //   throw new Error(`GET Response error: ${String(err)}`);
-  // }
-
   return loaderWrapper(async () => {
     const resp = await fetch(`${PATHS.BASE_URL}posts/${postId}`);
 
