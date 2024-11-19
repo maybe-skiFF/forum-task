@@ -34,6 +34,17 @@
   color: var(--color-2);
 }
 
+.topPostImg {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  top: 2px;
+  left: 6px;
+
+  cursor: pointer;
+}
+
 .favoriteImg {
   width: 20px;
   height: 20px;

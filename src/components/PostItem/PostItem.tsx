@@ -9,6 +9,9 @@ import likeNonActiveBtn from '../../../public/like-nonactive.svg';
 import dislikeActiveBtn from '../../../public/dislike-active.svg';
 import dislikeNonActiveBtn from '../../../public/dislike-nonactive.svg';
 import trashBtn from '../../../public/trash.svg';
+// import topArrow from '../../../public/caret-up-solid.svg';
+// import downArrow from '../../../public/caret-down-solid.svg';
+import topPost from '../../../public/crown-solid.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addPostToFavorite,
@@ -17,7 +20,7 @@ import {
 import { RootState } from '../../redux/store';
 import { useState } from 'react';
 import { deletePost } from '../../services/api';
-import { deletePostFromStore } from '../../redux/postsDataSlice';
+import { deletePostFromStore, movePostToTop } from '../../redux/postsDataSlice';
 import { useNavigate } from 'react-router-dom';
 
 interface IProps {
@@ -81,6 +84,12 @@ const PostItem = ({ postData }: IProps) => {
       }}
       className={styles.postItemContainer}
     >
+      <img
+        onClick={() => dispatch(movePostToTop(postData.id))}
+        className={styles.topPostImg}
+        src={topPost}
+        alt="topPost"
+      />
       <img
         onClick={() => addToFavoriteToggler()}
         className={styles.favoriteImg}

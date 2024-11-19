@@ -24,10 +24,24 @@ export const postsDataSlice = createSlice({
     addNewPostToStore: (state, action: PayloadAction<IPost>) => {
       state.postsData = [...state.postsData, action.payload];
     },
+    movePostToTop: (state, action: PayloadAction<number>) => {
+      const index = state.postsData.findIndex(
+        post => post.id === action.payload,
+      );
+
+      if (index !== -1) {
+        const [removedPost] = state.postsData.splice(index, 1);
+        state.postsData.unshift(removedPost);
+      }
+    },
   },
 });
 
-export const { setPostsToStore, deletePostFromStore, addNewPostToStore } =
-  postsDataSlice.actions;
+export const {
+  setPostsToStore,
+  deletePostFromStore,
+  addNewPostToStore,
+  movePostToTop,
+} = postsDataSlice.actions;
 
 export default postsDataSlice.reducer;
