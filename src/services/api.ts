@@ -11,6 +11,16 @@ async function getUsers(): Promise<IUser[]> {
   }
 }
 
+async function getUser(userId: string | undefined): Promise<IUser> {
+  try {
+    const resp = await fetch(`${PATHS.BASE_URL}users/${userId}`);
+
+    return (await resp.json()) as IUser;
+  } catch (err) {
+    throw new Error(`GET Response error: ${String(err)}`);
+  }
+}
+
 async function getPosts(): Promise<IPost[]> {
   try {
     const resp = await fetch(`${PATHS.BASE_URL}posts`);
@@ -83,4 +93,5 @@ export {
   getPostById,
   getCommentsByPostId,
   createPost,
+  getUser,
 };

@@ -1,16 +1,36 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './UserInfoForm.module.css';
 import arrowLeft from '../../../public/arrow-left.png';
 import { useForm } from 'react-hook-form';
 import { IFormUserData } from '../../interfaces';
+import { useEffect } from 'react';
+import { getUser } from '../../services/api';
 
 const UserInfoForm = () => {
+  const { key } = useParams();
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<IFormUserData>();
+
+  useEffect(() => {
+    getUser(key)
+      .then(data => {
+        const formUserData: IFormUserData = {
+          name: data.name,
+          username: data.username,
+          email: data.email,
+          city: data.address.city,
+          phone: data.phone,
+          company: data.company.name,
+        };
+        reset(formUserData);
+      })
+      .catch(err => console.error(err));
+  }, [key, reset]);
 
   const onSubmit = (data: IFormUserData) => {
     console.log(data);
