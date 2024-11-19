@@ -69,3 +69,15 @@
   color: var(--color-2);
   text-align: center;
 }
+
+@media (max-width: 1080px) {
+  .detailedPostContainer {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detailedPostContainer {
+    padding: 0 20px;
+  }
+}

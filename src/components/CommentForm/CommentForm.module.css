@@ -90,3 +90,15 @@
   color: red;
   text-align: center;
 }
+
+@media (max-width: 1080px) {
+  .formContainer {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .formContainer {
+    padding: 0 50px;
+  }
+}

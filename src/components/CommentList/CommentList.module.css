@@ -17,3 +17,15 @@
   margin-bottom: 28px;
   border-bottom: 1px solid var(--color-4);
 }
+
+@media (max-width: 1080px) {
+  .commentListContainer {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .commentListContainer {
+    padding: 0 20px;
+  }
+}
