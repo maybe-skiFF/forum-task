@@ -122,3 +122,19 @@
 
   margin: 5px 0;
 }
+
+@media (max-width: 1080px) {
+  .userInfoFormContainer {
+    padding: 0 50px 25px 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .userInfoFormContainer {
+    padding: 0 20px 25px 20px;
+  }
+
+  .formInput {
+    width: auto;
+  }
+}

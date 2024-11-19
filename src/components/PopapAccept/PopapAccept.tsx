@@ -16,7 +16,7 @@ const PopapAccept = ({ isVisible, setIsVisible }: IProps) => {
   useEffect(() => {
     const time = setTimeout(() => {
       closePopap();
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(time);
   });
