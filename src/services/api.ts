@@ -29,13 +29,6 @@ async function getUser(
   userId: string | undefined,
   setLoading: (loading: boolean) => void,
 ): Promise<IUser> {
-  // try {
-  //   const resp = await fetch(`${PATHS.BASE_URL}users/${userId}`);
-
-  //   return (await resp.json()) as IUser;
-  // } catch (err) {
-  //   throw new Error(`GET Response error: ${String(err)}`);
-  // }
   return loaderWrapper(async () => {
     const resp = await fetch(`${PATHS.BASE_URL}users/${userId}`);
 

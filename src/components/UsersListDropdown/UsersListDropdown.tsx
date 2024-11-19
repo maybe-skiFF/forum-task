@@ -11,6 +11,7 @@ interface IProps {
 
 const UsersListDropdown = ({ usersData }: IProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [, setIsPostsLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const hendlUserIdSelect = (selectedUserId: number | undefined) => {
@@ -19,7 +20,7 @@ const UsersListDropdown = ({ usersData }: IProps) => {
         .then(data => dispatch(setPostsToStore(data)))
         .catch(err => console.error(err));
     } else {
-      getPosts()
+      getPosts(setIsPostsLoading)
         .then(data => dispatch(setPostsToStore(data)))
         .catch(err => console.error(err));
     }
