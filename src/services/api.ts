@@ -85,6 +85,23 @@ async function createPost(post: IPost): Promise<void> {
   }
 }
 
+async function updateUserData(
+  user: IUser,
+  userId: string | undefined,
+): Promise<void> {
+  try {
+    await fetch(`${PATHS.BASE_URL}users/${userId}`, {
+      method: 'PUT',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+  } catch (err) {
+    throw new Error(`PUT Update user error: ${String(err)}`);
+  }
+}
+
 export {
   getUsers,
   getPosts,
@@ -94,4 +111,5 @@ export {
   getCommentsByPostId,
   createPost,
   getUser,
+  updateUserData,
 };

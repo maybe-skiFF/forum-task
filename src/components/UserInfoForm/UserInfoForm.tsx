@@ -4,7 +4,7 @@ import arrowLeft from '../../../public/arrow-left.png';
 import { useForm } from 'react-hook-form';
 import { IFormUserData } from '../../interfaces';
 import { useEffect } from 'react';
-import { getUser } from '../../services/api';
+import { getUser, updateUserData } from '../../services/api';
 import { useDispatch } from 'react-redux';
 import { updatingUserData } from '../../redux/usersDataSlice';
 
@@ -35,7 +35,7 @@ const UserInfoForm = () => {
       .catch(err => console.error(err));
   }, [key, reset]);
 
-  const onSubmit = (data: IFormUserData) => {
+  const onSubmit = async (data: IFormUserData) => {
     const payload = {
       id: Number(key),
       updatingUserData: {
@@ -63,6 +63,7 @@ const UserInfoForm = () => {
 
     dispatch(updatingUserData(payload));
     reset(payload);
+    await updateUserData(payload.updatingUserData, key);
   };
 
   return (
