@@ -24,3 +24,15 @@
   flex-wrap: wrap;
   gap: 40px;
 }
+
+@media (max-width: 1080px) {
+  .usersListContainer {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .usersListContainer {
+    padding: 0 20px;
+  }
+}
