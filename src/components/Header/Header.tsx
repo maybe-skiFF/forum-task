@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useState } from 'react';
 import { setAdmin } from '../../redux/usersDataSlice';
+import burgerMenuImg from '../../../public/burger-menu.svg';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const Header = () => {
     (state: RootState) => state.usersData.isAdmin,
   );
   const [isAdmin, setIsAdmin] = useState<boolean>(isUserAdmin);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const adminCheckboxHandler = () => {
     setIsAdmin(!isAdmin);
@@ -23,7 +25,15 @@ const Header = () => {
     <div className={styles.headerContainer}>
       <div className={styles.headerWrapper}>
         <Logo />
-        <div className={styles.headerLinkWrapper}>
+        <img
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={styles.burgerBtn}
+          src={burgerMenuImg}
+          alt="burgerMenuImg"
+        />
+        <div
+          className={`${styles.headerLinkWrapper} ${isMenuOpen ? styles.openMenu : ''}`}
+        >
           <div className={styles.adminWrapper}>
             <label className={styles.adminLabel} htmlFor="admin">
               Admin
