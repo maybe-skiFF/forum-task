@@ -27,7 +27,6 @@ const UserDropdownMenu = ({ userId }: IProps) => {
           >
             Edit user
           </li>
-          <li className={styles.dropdownItem}>Edit as admin</li>
         </ul>
       )}
     </div>

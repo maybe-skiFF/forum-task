@@ -9,8 +9,8 @@ import likeNonActiveBtn from '../../../public/like-nonactive.svg';
 import dislikeActiveBtn from '../../../public/dislike-active.svg';
 import dislikeNonActiveBtn from '../../../public/dislike-nonactive.svg';
 import trashBtn from '../../../public/trash.svg';
-// import topArrow from '../../../public/caret-up-solid.svg';
-// import downArrow from '../../../public/caret-down-solid.svg';
+import topArrow from '../../../public/caret-up-solid.svg';
+import downArrow from '../../../public/caret-down-solid.svg';
 import topPost from '../../../public/crown-solid.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -39,6 +39,8 @@ const PostItem = ({ postData }: IProps) => {
   const favoritesPosts = useSelector(
     (state: RootState) => state.favoritesPosts.favoritesPosts,
   );
+
+  const isAdmin = useSelector((state: RootState) => state.usersData.isAdmin);
 
   const isInFavorites = favoritesPosts.some(post => post.id === postData.id);
 
@@ -84,18 +86,32 @@ const PostItem = ({ postData }: IProps) => {
       }}
       className={styles.postItemContainer}
     >
-      <img
-        onClick={() => dispatch(movePostToTop(postData.id))}
-        className={styles.topPostImg}
-        src={topPost}
-        alt="topPost"
-      />
+      {isAdmin ? (
+        <img
+          onClick={() => dispatch(movePostToTop(postData.id))}
+          className={styles.topPostImg}
+          src={topPost}
+          alt="topPost"
+        />
+      ) : (
+        ''
+      )}
       <img
         onClick={() => addToFavoriteToggler()}
         className={styles.favoriteImg}
         src={!isInFavorites ? starImgNonActive : starImgActive}
         alt="Star"
       />
+      {isAdmin ? (
+        <img className={styles.topArrowImg} src={topArrow} alt="topArrow" />
+      ) : (
+        ''
+      )}
+      {isAdmin ? (
+        <img className={styles.downArrowImg} src={downArrow} alt="downArrow" />
+      ) : (
+        ''
+      )}
       <img
         onClick={() => likeToggler()}
         className={styles.likeImg}
