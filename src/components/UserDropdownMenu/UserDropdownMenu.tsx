@@ -3,7 +3,7 @@ import styles from './UserDropdownMenu.module.css';
 import { useNavigate } from 'react-router-dom';
 
 interface IProps {
-  userId: number;
+  userId: number | undefined;
 }
 
 const UserDropdownMenu = ({ userId }: IProps) => {
