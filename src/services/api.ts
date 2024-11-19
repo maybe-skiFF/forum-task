@@ -31,7 +31,7 @@ async function getPosts(): Promise<IPost[]> {
   }
 }
 
-async function getPostsById(userId: number): Promise<IPost[]> {
+async function getPostsById(userId: number | undefined): Promise<IPost[]> {
   try {
     const resp = await fetch(`${PATHS.BASE_URL}posts?userId=${userId}`);
 

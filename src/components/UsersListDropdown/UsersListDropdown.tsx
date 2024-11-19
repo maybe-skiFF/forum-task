@@ -13,7 +13,7 @@ const UsersListDropdown = ({ usersData }: IProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  const hendlUserIdSelect = (selectedUserId: number) => {
+  const hendlUserIdSelect = (selectedUserId: number | undefined) => {
     if (selectedUserId !== 0) {
       getPostsById(selectedUserId)
         .then(data => dispatch(setPostsToStore(data)))
