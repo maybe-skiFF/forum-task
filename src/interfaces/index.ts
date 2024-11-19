@@ -55,3 +55,13 @@ export interface IPostFormData {
   title: string;
   body: string;
 }
+
+export interface IFormUserData {
+  name: string;
+  username: string;
+  email: string;
+  city: string;
+  phone: string;
+  company: string;
+  id?: number;
+}
