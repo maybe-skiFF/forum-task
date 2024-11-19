@@ -16,9 +16,20 @@ export const usersDataSlice = createSlice({
     setUsersToStore: (state, action: PayloadAction<IUser[]>) => {
       state.usersData = action.payload;
     },
+    updatingUserData: (
+      state,
+      action: PayloadAction<{ id: number; updatingUserData: Partial<IUser> }>,
+    ) => {
+      const { id, updatingUserData } = action.payload;
+      const searchedUser = state.usersData.find(user => user.id === id);
+
+      if (searchedUser) {
+        Object.assign(searchedUser, updatingUserData);
+      }
+    },
   },
 });
 
-export const { setUsersToStore } = usersDataSlice.actions;
+export const { setUsersToStore, updatingUserData } = usersDataSlice.actions;
 
 export default usersDataSlice.reducer;

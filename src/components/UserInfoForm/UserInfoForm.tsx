@@ -5,9 +5,12 @@ import { useForm } from 'react-hook-form';
 import { IFormUserData } from '../../interfaces';
 import { useEffect } from 'react';
 import { getUser } from '../../services/api';
+import { useDispatch } from 'react-redux';
+import { updatingUserData } from '../../redux/usersDataSlice';
 
 const UserInfoForm = () => {
   const { key } = useParams();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -33,8 +36,33 @@ const UserInfoForm = () => {
   }, [key, reset]);
 
   const onSubmit = (data: IFormUserData) => {
-    console.log(data);
-    reset();
+    const payload = {
+      id: Number(key),
+      updatingUserData: {
+        name: data.name,
+        username: data.username,
+        email: data.email,
+        phone: data.phone,
+        address: {
+          city: data.city,
+          street: '',
+          suite: '',
+          zipcode: '',
+          geo: {
+            lat: '',
+            lng: '',
+          },
+        },
+        company: {
+          name: data.company,
+          catchPhrase: '',
+          bs: '',
+        },
+      },
+    };
+
+    dispatch(updatingUserData(payload));
+    reset(payload);
   };
 
   return (
