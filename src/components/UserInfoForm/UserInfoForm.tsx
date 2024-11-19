@@ -3,14 +3,16 @@ import styles from './UserInfoForm.module.css';
 import arrowLeft from '../../../public/arrow-left.png';
 import { useForm } from 'react-hook-form';
 import { IFormUserData } from '../../interfaces';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getUser, updateUserData } from '../../services/api';
 import { useDispatch } from 'react-redux';
 import { updatingUserData } from '../../redux/usersDataSlice';
+import { PopapAccept } from '../PopapAccept/PopapAccept';
 
 const UserInfoForm = () => {
   const { key } = useParams();
   const dispatch = useDispatch();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const {
     register,
@@ -63,6 +65,7 @@ const UserInfoForm = () => {
 
     dispatch(updatingUserData(payload));
     reset(payload);
+    setIsVisible(true);
     await updateUserData(payload.updatingUserData, key);
   };
 
@@ -188,6 +191,7 @@ const UserInfoForm = () => {
           </button>
         </form>
       </div>
+      <PopapAccept isVisible={isVisible} setIsVisible={setIsVisible} />
     </div>
   );
 };
