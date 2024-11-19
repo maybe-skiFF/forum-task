@@ -3,10 +3,12 @@ import { IUser } from '../interfaces';
 
 interface IUsersDataSlice {
   usersData: IUser[];
+  isAdmin: boolean;
 }
 
 const initialState: IUsersDataSlice = {
   usersData: [],
+  isAdmin: false,
 };
 
 export const usersDataSlice = createSlice({
@@ -27,9 +29,13 @@ export const usersDataSlice = createSlice({
         Object.assign(searchedUser, updatingUserData);
       }
     },
+    setAdmin: (state, action: PayloadAction<boolean>) => {
+      state.isAdmin = action.payload;
+    },
   },
 });
 
-export const { setUsersToStore, updatingUserData } = usersDataSlice.actions;
+export const { setUsersToStore, updatingUserData, setAdmin } =
+  usersDataSlice.actions;
 
 export default usersDataSlice.reducer;

@@ -26,5 +26,30 @@
 
 .headerLinkWrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 30px;
+}
+
+.adminWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+
+  cursor: pointer;
+}
+
+.adminLabel {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-2);
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.adminInput {
+  cursor: pointer;
 }
