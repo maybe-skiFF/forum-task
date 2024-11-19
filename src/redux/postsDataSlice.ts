@@ -34,6 +34,26 @@ export const postsDataSlice = createSlice({
         state.postsData.unshift(removedPost);
       }
     },
+    movePostUp: (state, action: PayloadAction<number>) => {
+      const index = state.postsData.findIndex(
+        post => post.id === action.payload,
+      );
+
+      if (index > 0) {
+        const [removedPost] = state.postsData.splice(index, 1);
+        state.postsData.splice(index - 1, 0, removedPost);
+      }
+    },
+    movePostDown: (state, action: PayloadAction<number>) => {
+      const index = state.postsData.findIndex(
+        post => post.id === action.payload,
+      );
+
+      if (index < state.postsData.length - 1) {
+        const [removedPost] = state.postsData.splice(index, 1);
+        state.postsData.splice(index + 1, 0, removedPost);
+      }
+    },
   },
 });
 
@@ -42,6 +62,8 @@ export const {
   deletePostFromStore,
   addNewPostToStore,
   movePostToTop,
+  movePostUp,
+  movePostDown,
 } = postsDataSlice.actions;
 
 export default postsDataSlice.reducer;

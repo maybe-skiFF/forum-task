@@ -20,7 +20,12 @@ import {
 import { RootState } from '../../redux/store';
 import { useState } from 'react';
 import { deletePost } from '../../services/api';
-import { deletePostFromStore, movePostToTop } from '../../redux/postsDataSlice';
+import {
+  deletePostFromStore,
+  movePostDown,
+  movePostToTop,
+  movePostUp,
+} from '../../redux/postsDataSlice';
 import { useNavigate } from 'react-router-dom';
 
 interface IProps {
@@ -103,12 +108,22 @@ const PostItem = ({ postData }: IProps) => {
         alt="Star"
       />
       {isAdmin ? (
-        <img className={styles.topArrowImg} src={topArrow} alt="topArrow" />
+        <img
+          onClick={() => dispatch(movePostUp(postData.id))}
+          className={styles.topArrowImg}
+          src={topArrow}
+          alt="topArrow"
+        />
       ) : (
         ''
       )}
       {isAdmin ? (
-        <img className={styles.downArrowImg} src={downArrow} alt="downArrow" />
+        <img
+          onClick={() => dispatch(movePostDown(postData.id))}
+          className={styles.downArrowImg}
+          src={downArrow}
+          alt="downArrow"
+        />
       ) : (
         ''
       )}
