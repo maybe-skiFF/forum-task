@@ -1,6 +1,20 @@
 import { PATHS } from '../constants/PATHS';
 import { IComment, IPost, IUser } from '../interfaces';
 
+async function loaderWrapper<T>(
+  apiCall: () => Promise<T>,
+  setLoading: (loading: boolean) => void,
+): Promise<T> {
+  try {
+    setLoading(true);
+    return await apiCall();
+  } catch (err) {
+    throw new Error(`API Call error: ${String(err)}`);
+  } finally {
+    setLoading(false);
+  }
+}
+
 async function getUsers(): Promise<IUser[]> {
   try {
     const resp = await fetch(`${PATHS.BASE_URL}users`);
@@ -41,14 +55,23 @@ async function getPostsById(userId: number | undefined): Promise<IPost[]> {
   }
 }
 
-async function getPostById(postId: number): Promise<IPost> {
-  try {
+async function getPostById(
+  postId: number,
+  setLoading: (loading: boolean) => void,
+): Promise<IPost> {
+  // try {
+  //   const resp = await fetch(`${PATHS.BASE_URL}posts/${postId}`);
+
+  //   return (await resp.json()) as IPost;
+  // } catch (err) {
+  //   throw new Error(`GET Response error: ${String(err)}`);
+  // }
+
+  return loaderWrapper(async () => {
     const resp = await fetch(`${PATHS.BASE_URL}posts/${postId}`);
 
     return (await resp.json()) as IPost;
-  } catch (err) {
-    throw new Error(`GET Response error: ${String(err)}`);
-  }
+  }, setLoading);
 }
 
 async function getCommentsByPostId(postId: number): Promise<IComment[]> {

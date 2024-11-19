@@ -6,14 +6,16 @@ import { getCommentsByPostId, getPostById } from '../../services/api';
 import { IComment, IPost } from '../../interfaces';
 import { CommentList } from '../../components/CommentList/CommentList';
 import { CommentForm } from '../../components/CommentForm/CommentForm';
+import { Loader } from '../../components/Loader/Loader';
 
 const DetailedPostPage = () => {
   const { key } = useParams();
   const [postData, setPostData] = useState<IPost>(Object);
+  const [isPostLoading, setIsPostLoading] = useState<boolean>(false);
   const [commentsData, setCommentsData] = useState<IComment[]>([]);
 
   useEffect(() => {
-    getPostById(Number(key))
+    getPostById(Number(key), setIsPostLoading)
       .then(data => setPostData(data))
       .catch(err => console.error(err));
 
@@ -25,7 +27,7 @@ const DetailedPostPage = () => {
   return (
     <>
       <Header />
-      <DetailedPostItem postData={postData} />
+      {isPostLoading ? <Loader /> : <DetailedPostItem postData={postData} />}
       <CommentForm setCommentsData={setCommentsData} />
       <CommentList commentsData={commentsData} />
     </>
